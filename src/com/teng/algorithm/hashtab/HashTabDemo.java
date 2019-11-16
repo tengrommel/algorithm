@@ -28,6 +28,11 @@ public class HashTabDemo {
                 case "list":
                     hashTab.list();
                     break;
+                case "find":
+                    System.out.println("请输入要查找的id");
+                    id = scanner.nextInt();
+                    hashTab.findEmpById(id);
+                    break;
                 case "exit":
                     scanner.close();
                     System.exit(0);
@@ -63,6 +68,18 @@ class HashTab {
     public void list() {
         for (int i = 0; i < size; i++) {
             empLinkedListArray[i].list(i);
+        }
+    }
+
+    public void findEmpById(int id) {
+        // 使用散列函数确定到哪条链表查找
+        int empLinkedListNO = hashFun(id);
+        Emp emp = empLinkedListArray[empLinkedListNO].findEmpById(id);
+        if (emp != null) {
+            // 找到
+            System.out.printf("在第%d条链表中找到了雇员id = %d", empLinkedListNO, id);
+        } else {
+            System.out.println("在哈希表中，没有找到该雇员~");
         }
     }
 
@@ -118,12 +135,35 @@ class EmpLinkedList {
         System.out.println("第" + (no+1) + "链表的信息为");
         Emp curEmp = head; // 辅助指针
         while (true) {
-            System.out.printf("=> id =%d name=%s\t", curEmp.id, curEmp.name);
+            System.out.printf("=> id =%d name=%s\n", curEmp.id, curEmp.name);
             if (curEmp.next == null) {
                 // 说明curEmp已经是最后节点
                 break;
             }
             curEmp = curEmp.next; // 后移遍历
         }
+    }
+    // 根据id查找雇员
+    public Emp findEmpById(int id) {
+        // 判断链表是否为空
+        if (head == null) {
+            System.out.println("链表为空");
+            return null;
+        }
+        // 辅助指针
+        Emp curEmp = head;
+        while (true) {
+            if (curEmp.id == id) {
+                break; // 这时curEmp就指向要查找的雇员
+            }
+            // 退出条件
+            if (curEmp.next == null) {
+                // 说明遍历当前链表没有找到该雇员
+                curEmp = null;
+                break;
+            }
+            curEmp = curEmp.next;
+        }
+        return curEmp;
     }
 }
