@@ -48,9 +48,11 @@ Huffman Tree创建步骤
 - 3、确定targetNode是parent的左子节点还是右子节点
 - 4、根据前面的情况来对应删除
 
-左子节点 parent.left = null
+第一种情况没有子节点
 
-右子节点 parent.right = null
+- 左子节点 parent.left = null
+
+- 右子节点 parent.right = null
 
 第二种情况：删除只有一颗子树的节点 比如1
 
@@ -64,3 +66,32 @@ Huffman Tree创建步骤
  
 （4）targetNode是parent的左子节点还是右子节点
 
+（5）如果targetNode有左子节点
+    
+- 如果targetNode是parent的左子节点 parent.left = target Node.left
+- 如果targetNode是parent的右子节点 parent.right = targetNode.left 
+
+（6）如果targetNode有右子节点
+
+- 如果targetNode是parent的左子节点 parent.left = targetNode.right
+- 如果targetNode是parent的右子节点 parent.left = targetNode.right
+
+第三种情况：删除有两颗子树的节点
+
+（1）需求先找到要删除的结点 targetNode
+
+（2）找到targetNode的父结点parent
+
+（3）从targetNode的右子树找到最小的结点
+
+（4）用一个临时变量，将最小结点的值保存到temp
+
+（5）删除该最小节点
+
+（6）targetNode.value = temp
+
+# 平衡二叉树
+
+- 平衡二叉树也叫平衡二叉搜索树，可以保证查询效率。
+
+- 特点 它是一颗空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一颗平衡二叉树。
