@@ -34,3 +34,33 @@ Huffman Tree创建步骤
 - 1、Node{data(存放数据), weight(权值), left, right}
 - 2、得到"字符串"对应的byte[]数组
 - 3、编写一个方法，将准备构建huffman树的Node节点放到list中，形式[Node[date=97, weight=5], Node[date=32, weight=9]...]
+
+# 二叉排序树
+> 二叉排序树：BST:(Binary Sort(Search) Tree)， 对于二叉排序树的任何一个非叶子节点，要求左子节点的值比当前节点的值小，右子节点的值比当前节点的值大。
+
+二叉排序树 删除节点的三种情况
+
+第一种情况：删除叶子节点
+
+思路
+- 1、需求先去找到要删除的结点 targetNode
+- 2、找到targetNode的父节点parent(考虑是否存在父节点)
+- 3、确定targetNode是parent的左子节点还是右子节点
+- 4、根据前面的情况来对应删除
+
+左子节点 parent.left = null
+
+右子节点 parent.right = null
+
+第二种情况：删除只有一颗子树的节点 比如1
+
+思路
+
+（1）需求先找到要删除的结点 targetNode
+
+（2）找到targetNode的父结点parent
+
+（3）确定targetNode的子节点是右子节点还是左子节点
+ 
+（4）targetNode是parent的左子节点还是右子节点
+
