@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class HuffmanTree {
-
     // 创建结点类
     // 为了让Node对象集合支持排序
     // 让Node实现Comparable接口
@@ -43,6 +42,8 @@ public class HuffmanTree {
     }
 
     // 创建huffman树
+
+    // 生成赫夫曼对应的赫夫曼编码
 
     /**
      * 需要创建成赫夫曼树的方法
